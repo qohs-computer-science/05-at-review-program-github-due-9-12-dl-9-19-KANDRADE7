@@ -41,12 +41,14 @@ public class HelloWorld {
 			System.out.println("Ask for help from your teachers and change your study methods. You can do anything you set your mind to.");
 
 		int userNameLen =  userName.length();
-		System.out.println(userNameLen);
 
 		for(int x =userNameLen; x<=favNum; x+=userNameLen){
-			System.out.print(x + ",");
+			System.out.print(x);
+			if((x+userNameLen) <=favNum)
+				System.out.print(",");
 		}//end loop
 
+		
 	}//end main
 
 }//end class
