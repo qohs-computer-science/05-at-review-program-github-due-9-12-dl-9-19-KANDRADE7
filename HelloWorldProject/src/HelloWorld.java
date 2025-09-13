@@ -4,32 +4,43 @@ import java.util.Scanner;
 public class HelloWorld {
 
 	public static void main(String[] args) {
-		//TODO: Implement Program Requirements Here
-
+		//create scanner
 		Scanner input = new Scanner(System.in);
 		System.out.print("\nEnter your name: ");
 		String userName = input.nextLine();
 
-		int lenName = userName.length();
-
-		for(int i=0; i<=lenName; i++){
-			if(userName.charAt(i) >= 33 && userName.charAt(i) <=64){
+		//check for legal name - no nums or weird characters
+		String illegal = "0123456789!@#$%^&*()~`-_=+[]{}|;:'\",.<>/?\\";
+		for(int i=0; i< userName.length(); i++){
+			if(illegal.indexOf(userName.charAt(i)) !=-1){
 				System.out.print("Enter a legal name: ");
 				userName=input.nextLine();
-				lenName = userName.length();
-			} //end if
-		}	//end for loop
+			}//end if
+		}//end for loop
 
 		System.out.print("Enter your age: ");
 		int age = input.nextInt();
 		input.nextLine();
+		while(age<0){
+			System.out.print("You cannot be " + age + " years old. Please enter your age again: ");
+			age=input.nextInt();
+			input.nextLine();
+		}//end while
+
 
 		System.out.print("Enter your favorite 3 digit number: ");
 		int favNum = input.nextInt();
+		while(favNum <100 || favNum >999){
+			System.out.print("Enter your favorite THREE DIGIT number: ");
+			favNum = input.nextInt();
+		}//end if
 
 		System.out.print("Enter your GPA: ");
 		double userGPA = input.nextDouble();
-
+		while(userGPA>5.00){
+			System.out.print("Oops! It seems you entered an invalid GPA. Enter your valid GPA again: ");
+			userGPA = input.nextDouble();
+		}//end while
 
 		//output
 		System.out.println("\nWelcome " + userName + "!");
@@ -50,15 +61,12 @@ public class HelloWorld {
 		else
 			System.out.println("Ask for help from your teachers and change your study methods. You can do anything you set your mind to.");
 
-		int userNameLen =  userName.length();
 
+		int userNameLen =  userName.length();
 		for(int x =userNameLen; x<=favNum; x+=userNameLen){
 			System.out.print(x);
 			if((x+userNameLen) <=favNum)
 				System.out.print(",");
 		}//end loop
-
-		
 	}//end main
-
 }//end class
